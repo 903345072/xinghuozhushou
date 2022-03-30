@@ -233,10 +233,10 @@ class Login_ extends State<recharge> {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(left: 10,top: 10),
-                  child: Text("赠送金额:"+give_money.toStringAsFixed(2)+"元",style: TextStyle(color: Colors.red),),
-                ),
+//                Container(
+//                  padding: EdgeInsets.only(left: 10,top: 10),
+//                  child: Text("赠送金额:"+give_money.toStringAsFixed(2)+"元",style: TextStyle(color: Colors.red),),
+//                ),
                 Container(
                   alignment: Alignment.center,
                   child: MaterialButton(

@@ -16,6 +16,7 @@ import 'package:flutterapp2/utils/JumpAnimation.dart';
 import 'package:flutterapp2/utils/Toast.dart';
 import 'package:flutterapp2/utils/model.dart';
 import 'package:flutterapp2/wiget/basketball/basketballMix.dart';
+import 'package:flutterapp2/wiget/basketball/basketballMix1.dart';
 import 'package:flutterapp2/wiget/basketball/basketballSf.dart';
 import 'package:flutterapp2/wiget/basketball/basketballrfSf.dart';
 import 'package:flutterapp2/wiget/basketball/basketbifen.dart';
@@ -24,6 +25,7 @@ import 'package:flutterapp2/wiget/football/banquanchang.dart';
 import 'package:flutterapp2/wiget/football/bifen.dart';
 import 'package:flutterapp2/wiget/football/feirangqiu.dart';
 import 'package:flutterapp2/wiget/football/mix.dart';
+import 'package:flutterapp2/wiget/football/mix1.dart';
 import 'package:flutterapp2/wiget/football/rangqiu.dart';
 import 'package:flutterapp2/wiget/football/zongjinqiu.dart';
 
@@ -1598,7 +1600,7 @@ class order_ extends State<order> {
             children: <Widget>[
               //比赛组件
               getComponent(p_status, p_goal, widget.games, e2, e, zd_name,
-                  kd_name, spf, rqspf, crs_win, ttg_odds, half_odds),
+                  kd_name, spf, rqspf, crs_win, ttg_odds, half_odds,week_time),
               IconButton(
                 onPressed: () {
                   widget.games.removeWhere((key, value) => false);
@@ -1723,7 +1725,9 @@ class order_ extends State<order> {
                   dxf_odds,
                   wnm_win,
                   wnm_lose,
-                  dafen),
+                  dafen,
+                  week_time
+              ),
               IconButton(
                 onPressed: () {
                   widget.game_ids.remove(list_game_[e]["id"]);
@@ -1764,7 +1768,7 @@ class order_ extends State<order> {
     return game_ids.length.toString();
   }
   getComponent(p_status, p_goal, games, e2, e, zd_name, kd_name, spf, rqspf,
-      crs_win, ttg_odds, half_odds) {
+      crs_win, ttg_odds, half_odds,week_time) {
     switch (widget.type) {
       case 0:
         int flag1=0;
@@ -1785,7 +1789,7 @@ class order_ extends State<order> {
             }
           });
         }
-        return  mix(
+        return  mix1(
           callBack: (value) {
             setState(() {
               games = value;
@@ -1803,6 +1807,7 @@ class order_ extends State<order> {
           crs_win: crs_win,
           ttg_odds: ttg_odds,
           half_odds: half_odds,
+          week_time: week_time,
         );
       case 1:
         return rangqiu(
@@ -1958,7 +1963,7 @@ class order_ extends State<order> {
   }
 
   getComponent_bas(p_status, p_goal, games, e2, e, zd_name, kd_name, mnl_odds,
-      hdc_odds, dxf_odds, wnm_win, wnm_lose, dafen) {
+      hdc_odds, dxf_odds, wnm_win, wnm_lose, dafen,week_time) {
     switch (widget.type) {
 
       case 0:
@@ -1981,7 +1986,7 @@ class order_ extends State<order> {
             }
           });
         }
-        return flag1==0 && flag2==0? basketballMix(
+        return flag1==0 && flag2==0? basketballMix1(
           callBack: (value) {
             setState(() {
               games = value;
@@ -2000,6 +2005,7 @@ class order_ extends State<order> {
           zs_sfc: wnm_win,
           ks_sfc: wnm_lose,
           dxf: dxf_odds,
+          week_time: week_time,
         ):Column(
           children: <Widget>[
             flag1==1?basketballrfSf(
